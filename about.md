@@ -4,6 +4,8 @@ title: Sobre
 permalink: /about/
 ---
 
-Olá! Sou Gabriel Mercado, entusiasta de TI e estudante do Jeremy IT Lab.
+Olá, eu sou o Gabriel Mercado. Sou estudante e entusiasta da área de cibersegurança. Criei este blog como uma forma de registrar “checkpoints” do meu aprendizado ao longo da minha jornada em TI — desde conceitos básicos até experiências práticas.
 
-Este blog é onde documento o que aprendo — de Docker a redes, passando por ferramentas e conceitos que uso no dia a dia.
+Entre meus interesses estão música, cultura geek em geral e diferentes tipos de games e irei tentar relacionar isso aos posts e na maneira que mostro os conteudos que aprendo.
+
+*Seção em construção.*
