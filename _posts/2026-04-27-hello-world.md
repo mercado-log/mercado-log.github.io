@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Hello World"
-date: 2026-04-27
+date: 2026-04-27 06:00:00
 ---
 "Roll the dice" - Bukowski,C.
 
