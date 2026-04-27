@@ -20,3 +20,4 @@ timezone: America/Sao_Paulo
 
 header_pages:
   - about.md
+  - posts.md 
