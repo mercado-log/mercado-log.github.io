@@ -11,9 +11,9 @@ minima:
     - { platform: github,   user_url: "https://github.com/mercado-log" }
     - { platform: linkedin, user_url: "https://www.linkedin.com/in/gabriel-mercado0" }
 
+header_pages:
+  - 1-about.md
+  - 2-posts.md
+
 lang: pt-BR
 timezone: America/Sao_Paulo
-
-header_pages:
-  - about.md
-  - posts.md
