@@ -17,3 +17,6 @@ social_links:
 
 lang: pt-BR
 timezone: America/Sao_Paulo
+
+header_pages:
+  - about.md
