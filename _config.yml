@@ -12,8 +12,8 @@ github_username: mercado-log
 linkedin_username: gabriel-mercado0
 
 header_pages:
-  - 1-about.md
-  - 2-posts.md
+  -  about.md
+  -  posts.md
 
 lang: pt-BR
 timezone: America/Sao_Paulo
