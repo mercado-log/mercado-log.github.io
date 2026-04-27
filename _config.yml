@@ -1,0 +1,19 @@
+title: Mercado.log
+description: Aprendendo e documentando TI
+url: "https://mercado-log.github.io"
+author: Gabriel Araujo Mercado
+
+theme: minima
+
+minima:
+  skin: classic
+
+header_pages:
+  - about.md
+
+social_links:
+  - { platform: github, user_url: "https://github.com/mercado-log" }
+  - { platform: linkedin, user_url: "https://www.linkedin.com/in/gabriel-mercado0" }
+
+lang: pt-BR
+timezone: America/Sao_Paulo
