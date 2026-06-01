@@ -4,6 +4,7 @@ title: "Estrutura de um sistema Linux - parte 1"
 date: 2026-05-31 10:00:00
 ---
 
+
 A estrutura de diretorios do linux sempre foi uma ideia que me assustava no começo da faculdade e confesso que até mesmo no meio dela, grande parte dos conteúdos abordados até o 2 semestre tinha um foco em hardware e um uma referência  redes, ainda me lembro do projeto que havíamos feito com uma distribuição propia do Slac, onde foram nos apresentados permissões de diretórios, usuários e montagem de partições.
 
 Apesar de ainda parecer algo assustador na época seguimos em frente e no 3 e 4 semestre tivemos um considerável sequencia deste conteudo com a criação de um firewall no 3 semestre a o planejamento de um mini ambiente que uitlizava de uma famosa distribuição Linux, o Puppy.
