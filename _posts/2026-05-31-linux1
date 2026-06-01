@@ -1,0 +1,49 @@
+---
+layout: post
+title: "Estrutura de um sistema Linux - parte 1"
+date: 2026-05-31 10:00:00
+---
+
+A estrutura de diretorios do linux sempre foi uma ideia que me assustava no começo da faculdade e confesso que até mesmo no meio dela, grande parte dos conteúdos abordados até o 2 semestre tinha um foco em hardware e um uma referência  redes, ainda me lembro do projeto que havíamos feito com uma distribuição propia do Slac, onde foram nos apresentados permissões de diretórios, usuários e montagem de partições.
+
+Apesar de ainda parecer algo assustador na época seguimos em frente e no 3 e 4 semestre tivemos um considerável sequencia deste conteudo com a criação de um firewall no 3 semestre a o planejamento de um mini ambiente que uitlizava de uma famosa distribuição Linux, o Puppy.
+
+O Puppy Linux se trata de uma distribuição baseada na família Debian e sua principal função é rodar na mémoria do computador, até descobrir o problema se foi algumas semanas de aula até confiar na montagem do filesystem e descobrir sobre as regras de firewall que o impedia de se conectar com outras maquinas, um pé direito com o Iptables.
+
+Ainda sim nesse final de semestre busquei me aprofundar um pouco mais no mundo do linux a parti a ler o material da certificação LPI Linux Essentials onde tive mais alguns contatos, não tão profundos por enquanto mas basicos do linux, sendo uma boa mescla teorica com pratica, onde foram  apresentados scripts, argumentos, regex, processos e na reta final , estrutura de diretórios.
+
+# Estrutura de diretórios do Linux
+
+O sistema operacional Linux possui como uma das suas principais características o conceito de tudo como arquivo afeta a estrutura de maneira que tudo, é claro, é um arquivo, desde o HD instalado no computador ou as configurações do sistema se tratando de um arquivo.
+
+O diretório principal que rege todo o sistema é mais conhecido como diretório root e representado como "/" e abaixo dele reside os diretórios de configuração, de montagem de SSD, interfaces de rede e binários de programas, estes últimos tem mais algumas particularidades que serão cobertas mais a frente.
+
+/bin | /sbin | usr/local/bin- A pasta bin, como o nome sugere se trata do diretório que armazena os arquivos dos binários dos programas presentes e seria isso por si só mas há um detalhe que vale a pena ser dito, o diretório /bin presente logo abaixo do root é o primeiro inicializado e o único quando há algum problema no S.O e é ativado o modo single-user, após ele temos o /sbin que se trata dos programas voltados a administração do sistema ,manipulador e executados com permissão de superusuario, e abaixo na hierarquia possuímos também o /usr/bin que se trata dos binários não essenciais e o /usr/local/bin que são os binários não gerenciados pelo gerenciador de pacote, normalmente compilados manualmente.
+
+O próximo diretório será o /dev, esse em questão gerencia os dispositivos conectados ao computador, desde o SSD até a webcam, vale ressaltar que o /dev possui algumas arquivos "especiais", como por exemplo o arquivo /dev/null que representa uma lixeira do sistema e junto a ele o  /dev/zero que contem infinitos zeros, ideal para a criação de arquivos de diferentes tamanhos, e por fim o /dev/random que retornam dados aleatórios ideais para fins criptográficos.
+
+O /etc é o mais incomum entre eles, todos os diretorios do linux seguem um padrão em inglês que denuncia seu proposito, como /bin que significa binaries, /dev que é o diretório devices e o /usr sendo o antigo local que armazenava os dados do usuário, mas com o etc é diferente, ele significa _et cetera_ e sua função no começo era encaixar partes do sistema que não se categorizavam em nenhuma outra pasta, porém hoje em dia se trata de um dos principais componentes pois nele há endereços de montagem, configurações do sistema, os usuários em /etc/passwd e suas senhas em /etc/shadow após a aplicação do hash.
+
+/media é onde os dispositivos de armazenamento serão automaticamente montados, uma das peculiaridade desse diretório é sua inserção recente nas distros do linux por conta da tecnologia  _hot_plugin_, tecnologia que permite a conexão de dispositivos com o computador ligado, só foi se popularizar décadas após do Unix 
+
+/lib é onde são armazenadas as bibliotecas, essas que são blocos de códigos utilizados compartilhada por vários programas, alguns de seus papeis se trata de conter funções criptográficas ou a capacidade de leitura de arquivos, por exemplo, a execução do programa ls no terminal necessita de um formatador de saída que é compartilhado por programas como man, less e entre outros. As bibliotecas utilizadas por um programa no Linux pode ser consultada com o comando ldd e o caminho do binário do arquivo, por exemplo ldd /bin/ls.
+
+/tmp é o diretório que armazena os arquivos temporários que são usados pelas aplicações e diferente de boa parte das pastas presentes no diretório raiz /, /temp é um dos poucos que se pode manipular sem permissões de root. 
+
+Os diretórios /proc e /sys são ambos virtuais e possuem informações do sistema, sendo o /proc o diretorio que se pode encontrar informações do kernel, cpu e processos em execução, enquanto o /sys possui informações e configurações utilizados nos dispositivos conectado ao computador, um exemplo deste é a configuração utilizada pelas placas de rede no /sys/class/net/enp0s3, nome comum para uma dessas interfaces.
+
+O diretório /var se trata de um recurso muito importante onde reside os logs do sistema, logs das aplicações e principalmente os banco de dados das aplicações, isso por si denuncia sua principal função que é armazenas dados variáveis do sistema.
+
+Atualmente o /usr se trata de um local onde diversos programas residem, sendo eles instalados pelos gerenciadores de pacotes ou não, sendo diferenciados pelo local, sendo os "oficiais" levados ao /usr/bin e os compilados manualmente no /usr/local/bin e também o /usr/lib, onde reside mais algumas bibliotecas usadas pelos programas, Uma ultima curiosidade se trata do programa man que reside nesse diretório 
+
+Por fim o diretório /home é onde os usuários ficam localizados onde são criados, editados e deletados arquivos dos usuários.
+
+# Bônus 
+
+O modo single-user do Linux é uma poderosa adição que permite a recuperação e manutenção em momentos críticos e como citado anteriormente boa parte de suas ferramentas e controles são derivados do diretório raiz, no entanto nas distribuições recentes do Linux a pasta onde se mantinha os comandos necessários para este tipo de tarefa (/bin) passou a se redirecionada para o local do /usr/bin e com isso a duvida, todos os programas instalados de maneira oficial pelo gerenciador de pacote serão carregados no modo de recuperação? e sim, o binario destes tipos de programas são carregados juntamente ao modo, contudo sua execução por inumeros motivos não o ocorre, isso devido a restrição de inicialização de processos pelo systemd e a indisponibilidade de rede agregada a isso.
+
+Algumas das muitas perguntas descobertas com essa pesquisa foi do diretório /opt que que sua função é armazenar os códigos compilados por você mesmo, no entanto como abordado no paragrafo de /usr já existe um local para isso que se trata do /usr/local e a principal diferença é a forma como os programas são distribuídos e gerenciados, normalmente o /opt é reservado de maneira a deixar cada programa com seu próprio diretório e seus componentes logo abaixo, similar a um guarda chuva, enquanto o /usr/local distribui seus componentes juntos ao restantes, similarmente a como o Linux gerencia seus pacotes vindos de seus gerenciadores de pacote.  
+
+# Resumo
+
+Esse post pode me agregou muito pela capacidade de observar certos detalhes que compõe a historia do Sistema Operacional Linux funciona e concretizar uma de suas bases para um amplo conhecimento nas áreas necessárias para segurança da informação.
